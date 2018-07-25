@@ -1,0 +1,28 @@
+#+TITLE: APOD utilities
+
+Very simple util to bring down the most recent NASA Astronomy Picture
+of the Day, with some shell scripts to set the picture as the desktop
+wallpaper.
+
+* Build/install
+
+#+BEGIN_SRC sh
+go build # or go install
+#+END_SRC
+
+The library and executable are in separate src directories, so to
+install the executable (~apod~):
+#+BEGIN_SRC sh
+go install apod/apod.go
+#+END_SRC
+
+That will install it to `$GOBIN`.
+
+* Usage
+
+#+BEGIN_SRC sh
+apod/apod --help
+Usage of apod/apod:
+  -output string
+    	Output directory (default ".")
+#+END_SRC
