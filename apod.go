@@ -56,13 +56,13 @@ func generateOutputPath(outputDir string, imagePath string) string {
 	return fmt.Sprintf("%s/%s", outputDir, file)
 }
 
-func ApodDownload(outputDir string, ds string) {
+func ApodDownload(outputDir string, ds string) string {
 	htmlUrl := fmt.Sprintf("https://apod.nasa.gov/apod/ap%s.html", ds)
 
 	resp, err := http.Get(htmlUrl)
 	if err != nil {
 		fmt.Print(err)
-		return
+		return ""
 	}
 	defer resp.Body.Close()
 
@@ -70,8 +70,10 @@ func ApodDownload(outputDir string, ds string) {
 	imgUrl := fmt.Sprintf("https://apod.nasa.gov/apod/%s", imagePath)
 	outputPath := generateOutputPath(outputDir, imagePath)
 	getImage(imgUrl, outputPath)
+
+	return outputPath
 }
 
 func ApodDownloadLatest(outputDir string) {
-	ApodDownload(outputDir, time.Now().Format("060102"))
+	fmt.Print(ApodDownload(outputDir, time.Now().Format("060102")))
 }

@@ -1,0 +1,2 @@
+
+0 8 * * * ~/go/src/github.com/timmyw/apod/getandsetapod.sh

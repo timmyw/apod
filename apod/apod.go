@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"github.com/timmyw/apod"
+
 )
 
 func main() {

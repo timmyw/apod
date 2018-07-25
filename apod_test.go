@@ -1,12 +1,12 @@
 package apod_test
 
 import (
-	"apod"
+	"github.com/timmyw/apod"
 )
 
 func Example_ApodDownloadLatest() {
 
-	apod.ApodDownloadLatest()
+	apod.ApodDownloadLatest("/tmp")
 
 	// Output:
 }
