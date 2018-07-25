@@ -1,7 +1,7 @@
 package apod_test
 
 import (
-	"github.com/timmyw/apod"
+	"apod"
 )
 
 func Example_ApodDownloadLatest() {
