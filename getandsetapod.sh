@@ -1,10 +1,15 @@
 #!/bin/sh
 
-TMPDIR="/tmp"
+TMPDIR="$HOME/apod"
+mkdir -p $TMPDIR
 
 IMGPATH=`apod --output $TMPDIR`
 
-dconf write  /org/mate/desktop/background/picture-filename "'$IMGPATH'"
-dconf write  /org/mate/desktop/background/picture-options "'stretched'"
+case $DESKTOP_SESSION in
+    mate)
+        dconf write  /org/mate/desktop/background/picture-filename "'$IMGPATH'"
+        dconf write  /org/mate/desktop/background/picture-options "'stretched'"
+        ;;
+esac
 
 
