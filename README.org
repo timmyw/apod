@@ -18,6 +18,12 @@ go install apod/apod.go
 
 That will install it to `$GOBIN`.
 
+or, if you don't have ~GOBIN~ set:
+#+BEGIN_SRC sh
+GOBIN=$GOPATH/bin go install apod/apod.go
+#+END_SRC
+
+
 * Usage
 
 #+BEGIN_SRC sh
