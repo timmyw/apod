@@ -8,6 +8,7 @@ import (
 	"os"
 	"path/filepath"
 	"time"
+	"strings"
 )
 
 func extractImageUrl(body io.ReadCloser) string {
@@ -86,9 +87,13 @@ func ApodDownload(outputDir string, ds string) string {
 	defer resp.Body.Close()
 
 	imagePath := extractImageUrl(resp.Body)
-	imgUrl := fmt.Sprintf("https://apod.nasa.gov/apod/%s", imagePath)
+	imageUrl := imagePath
+	if ! strings.Contains(imagePath, "http") {
+		// Assume this is NOT an aboslute path
+		imageUrl = fmt.Sprintf("https://apod.nasa.gov/apod/%s", imagePath)
+	}
 	outputPath := generateOutputPath(outputDir, imagePath)
-	getImage(imgUrl, outputPath)
+	getImage(imageUrl, outputPath)
 
 	return outputPath
 }
