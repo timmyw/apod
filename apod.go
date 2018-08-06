@@ -44,6 +44,7 @@ func extractImageUrl(body io.ReadCloser) string {
 					}
 				}
 				lastToken = t
+			}
 		}
 
 	}
