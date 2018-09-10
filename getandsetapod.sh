@@ -6,7 +6,14 @@
 PID=$(pgrep session) # Hopefully this finds the desktop session
 desktop=$(grep -z DESKTOP_SESSION  /proc/$PID/environ|cut -d= -f2-)
 
-echo "desktop:[$desktop]:"
+dbg ()
+{
+    if [ "$DEBUG" != "" ]; then
+        echo $1
+    fi
+}
+
+dbg "desktop:[$desktop]:"
 case $desktop in
     mate)
         PID=$(pgrep mate-session)
