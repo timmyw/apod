@@ -3,7 +3,10 @@
 # Try to work out what desktop session we are running - this isn't
 # going to work unless X or Wayland is running
 
-PID=$(pgrep session) # Hopefully this finds the desktop session
+#PID=$(pgrep session) # Hopefully this finds the desktop session
+
+# Trying a more robust way of finding the desktop session
+PID=$(pgrep -a session|grep -v worker|grep -v run-script| awk '{print $1}')
 desktop=$(grep -z DESKTOP_SESSION  /proc/$PID/environ|cut -d= -f2-)
 
 dbg ()
